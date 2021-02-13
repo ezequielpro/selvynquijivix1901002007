@@ -149,3 +149,6 @@ const btnAccion = e => {
 	}
 	e.stopPropagation()
 }
+function alerta(){
+	alert("Producto Agregado al carrito...!!!")
+}
