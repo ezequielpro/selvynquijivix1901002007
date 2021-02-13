@@ -25,7 +25,7 @@ items.addEventListener('click', e => {
 
 const fetchData = async() =>{
 	try{
-		const res= await fetch(`https://ezequielpro.github.io/examenR/base.json`)
+		const res= await fetch(`base.json`)
 		const data = await res.json()
 		//console.log(data)		
 		pintarCards(data)
