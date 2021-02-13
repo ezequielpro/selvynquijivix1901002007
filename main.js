@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 		carrito = JSON.parse(localStorage.getItem('carrito'))
 		pintarCarrito()
 	}
+	
 })
 
 cards.addEventListener('click', e =>{
@@ -40,7 +41,7 @@ const pintarCards = data =>{
 	templateCard.querySelector('h5').textContent = producto.title
 	templateCard.querySelector('p').textContent = producto.precio
 	templateCard.querySelector('img').setAttribute('src', producto.imgen)
-	templateCard.querySelector('.btn-dark').dataset.id = producto.id
+	templateCard.querySelector('.btn-warning').dataset.id = producto.id
 
 
 	const clone = templateCard.cloneNode(true)
@@ -52,7 +53,7 @@ const pintarCards = data =>{
 const addCarrito = e => {
 	//console.log(e.target)
 	//console.log(e.target.classList.contains('btn-dark'))	
-	if (e.target.classList.contains('btn-dark')) {
+	if (e.target.classList.contains('btn-warning')) {
 		
 		setCarrito(e.target.parentElement)
 		
@@ -63,7 +64,7 @@ const addCarrito = e => {
 const setCarrito = objeto =>{
 	//console.log(objeto)
 	const producto = {
-		id: objeto.querySelector('.btn-dark').dataset.id,
+		id: objeto.querySelector('.btn-warning').dataset.id,
 		title: objeto.querySelector('h5').textContent,
 		precio: objeto.querySelector('p').textContent,
 		cantidad: 1
@@ -98,6 +99,7 @@ const pintarCarrito = () => {
 	pintarFooter()
 
 	localStorage.setItem('carrito',JSON.stringify(carrito))
+	
 
 }
 
@@ -130,7 +132,7 @@ const pintarFooter = () => {
 }
 const btnAccion = e => {
 	if (e.target.classList.contains('btn-info')) {
-		console.log(carrito[e.target.dataset.id])
+		//console.log(carrito[e.target.dataset.id])
 		const producto = carrito[e.target.dataset.id]
 		producto.cantidad ++
 		carrito[e.target.dataset.id] = {...producto}
